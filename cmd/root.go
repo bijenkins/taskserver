@@ -22,6 +22,7 @@ import (
 	"github.com/spf13/cobra"
 
 	homedir "github.com/mitchellh/go-homedir"
+	add "github.com/bijenkins/taskserver/cmd/add"
 	"github.com/spf13/viper"
 )
 
@@ -34,7 +35,10 @@ var rootCmd = &cobra.Command{
 	Long:  `taskserver long`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Taskout")
+
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -58,7 +62,7 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.AddCommand()
+	rootCmd.AddCommand(add.NewCommand)
 }
 
 // initConfig reads in config file and ENV variables if set.
